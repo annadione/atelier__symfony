@@ -4,9 +4,22 @@ namespace App\Entity;
 
 use App\Repository\VoitureRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=VoitureRepository::class)
+ * @UniqueEntity(
+ *     fields={"assurance"},
+ *     message="Erreur il existe deja"
+ * )
+ * @UniqueEntity(
+ *     fields={"carte_grise"},
+ *     message="Erreur il existe deja"
+ * )
+ * @UniqueEntity(
+ *     fields={"matricule"},
+ *     message="Erreur il existe deja"
+ * )
  */
 class Voiture
 {

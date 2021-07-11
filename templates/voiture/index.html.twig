@@ -13,8 +13,8 @@
                 <div class="col-md-4">{{ form_row(form.model,{'attr':{'placeholder': 'Saisissez le model'}}) }}</div>
             </div>
             <div class="row" style="margin-left: 15%">
-                <div class="col-md-5">{{ form_row(form.assurance) }}</div>
-                <div class="col-md-5">{{ form_row(form.carte_grise) }}</div>
+                <div class="col-md-5">{{ form_row(form.assurance,{'attr':{'placeholder' :'Saisissez le numero de assurance'}}) }}</div>
+                <div class="col-md-5">{{ form_row(form.carte_grise,{'attr':{'placeholder' :'Saisissez le numero de la carte grise'}}) }}</div>
             </div>
             <div class="row" style="margin-left: 23%">
                 <div class="col-md-4">{{ form_row(form.matricule,{'attr':{'placeholder': 'Saisissez le matricule'}}) }}</div>
@@ -36,8 +36,7 @@
                  <th>CarteGrise</th>
                  <th>Matricule</th>
                  <th>Chauffeur</th>
-
-                <th>actions</th>
+                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -51,8 +50,8 @@
                 <td>{{ voit.matricule}}</td>
                 <td>{{ voit.chaufvoit}}</td>
                 <td>
-                    <a href="#">afficher</a>
-                    <a href="#">editer</a>
+                    <a href="#">Modifier</a>
+                    <a href="#">Supprimer</a>
                 </td>
                 </tr>
             {% endfor %}

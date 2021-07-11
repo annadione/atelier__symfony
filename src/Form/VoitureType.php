@@ -16,8 +16,8 @@ class VoitureType extends AbstractType
             ->add('matricule')
             ->add('marque')
             ->add('model')
-            ->add('assurance', FileType::class)
-            ->add('carte_grise',FileType::class)
+            ->add('assurance')
+            ->add('carte_grise')
             ->add('chaufvoit')
         ;
     }
