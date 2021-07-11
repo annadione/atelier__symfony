@@ -3,28 +3,58 @@
 {% block title %}Ajouter une voiture{% endblock %}
 
 {% block body %}
+
+    <h2 style="margin-top: 2%; margin-left: 38%; margin-bottom: 3%">Ajout d'une voiture</h2>
+    <div class="container">
+        <div class="form-group" style=" padding: 3%; background-color: rgba(19, 19, 18, 0.2); border-radius: 50%">
+            {{ form_start(form) }}
+            <div class="row" style="margin-left: 23%">
+                <div class="col-md-4">{{ form_row(form.marque,{'attr':{'placeholder': 'Saisissez la marque'}}) }}</div>
+                <div class="col-md-4">{{ form_row(form.model,{'attr':{'placeholder': 'Saisissez le model'}}) }}</div>
+            </div>
+            <div class="row" style="margin-left: 15%">
+                <div class="col-md-5">{{ form_row(form.assurance) }}</div>
+                <div class="col-md-5">{{ form_row(form.carte_grise) }}</div>
+            </div>
+            <div class="row" style="margin-left: 23%">
+                <div class="col-md-4">{{ form_row(form.matricule,{'attr':{'placeholder': 'Saisissez le matricule'}}) }}</div>
+                <div class="col-md-4">{{ form_row(form.chaufvoit,{'label': 'Chauffeur'}) }}</div>
+            </div>
+            <button type="submit" class="btn btn-success" style="margin-top: 1%; margin-left: 46%">Ajouter</button>
+            {{ form_end(form) }}
+
+    </div>
+
+
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Nom</th>
-                <th>Prenom</th>
-                 <th>Telephone</th>
-               
+                <th>Marque</th>
+                <th>Model</th>
+                 <th>Assurance</th>
+                 <th>CarteGrise</th>
+                 <th>Matricule</th>
+                 <th>Chauffeur</th>
+
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
-            {% for voiturer in voitures %}
+            {% for voit  in rpo %}
                 <tr>
-                <td>{{ chauffeur.id }}</td>
-                <td>{{ chauffeur.prenom }}</td>
-                <td>{{ chauffeur.nom }}</td>
-                <td>{{ chauffeur.telephone }}</td>
+                <td>{{ voit.id }}</td>
+                <td>{{ voit.marque}}</td>
+                <td>{{ voit.model }}</td>
+                <td>{{ voit.assurance}}</td>
+                <td>{{ voit.carteGrise}}</td>
+                <td>{{ voit.matricule}}</td>
+                <td>{{ voit.chaufvoit}}</td>
                 <td>
                     <a href="#">afficher</a>
                     <a href="#">editer</a>
                 </td>
                 </tr>
             {% endfor %}
+    <table/>
 {% endblock %}
