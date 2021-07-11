@@ -2,12 +2,22 @@
 
 namespace App\Entity;
 
-use App\Repository\VoitureRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\VoitureRepository;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=VoitureRepository::class)
+ * @ApiResource(
+ *      attributes={
+ *              "order":{"id":"DESC"}
+ *      },
+ *      normalizationContext={"groups"={"read:voiture"}},
+ *     collectionOperations={"get"},
+ *     itemOperations={"get"},
+ * )
  * @UniqueEntity(
  *     fields={"assurance"},
  *     message="Erreur il existe deja"
@@ -37,21 +47,25 @@ class Voiture
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"read:voiture"})
      */
     private $marque;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"read:voiture"})
      */
     private $model;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"read:voiture"})
      */
     private $assurance;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"read:voiture"})
      */
     private $carte_grise;
 
