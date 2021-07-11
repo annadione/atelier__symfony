@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Voiture;
 use App\Form\VoitureType;
 use App\Repository\VoitureRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -23,25 +24,24 @@ class VoitureController extends AbstractController
         ]);
     }
      /**
-     * @Route("/voiture/new", name="voiture_new", methods={"GET","POST"})
+     * @Route("/voiture", name="voiture")
      */
-    public function new(Request $request): Response
+    public function new(Request $req, EntityManagerInterface $mana, VoitureRepository $repo): Response
     {
-        $voiture = new Voiture();
-        $form = $this->createForm(VoitureType::class, $voiture);
-        $form->handleRequest($request);
+        $rp = $repo->findAll();
+        $voit = new Voiture();
+        $form = $this->createForm(VoitureType::class,$voit);
+        $form->handleRequest($req);
+        if ($form->isSubmitted() && $form->isValid()){
+            $mana->persist($voit);
+            $mana->flush();
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($voiture);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('voiture_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('voiture');
         }
 
-        return $this->renderForm('voiture/new.html.twig', [
-            'voiture' => $voiture,
-            'form' => $form,
+        return $this->render('voiture/index.html.twig',[
+            'form' =>$form->createView(),
+            'rpo' =>$rp,
         ]);
     }
 

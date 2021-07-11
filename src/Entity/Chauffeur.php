@@ -2,13 +2,20 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\ChauffeurRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=ChauffeurRepository::class)
+ * @ApiResource(
+ *     collectionOperations={"get"},
+ *     itemOperations={"get"},
+ *     normalizationContext={"groups"={"infos:chauffeur"}}
+ * )
  */
 class Chauffeur
 {
@@ -16,16 +23,19 @@ class Chauffeur
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     *
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"infos:chauffeur"})
      */
     private $prenom;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"infos:chauffeur"})
      */
     private $nom;
 
@@ -36,11 +46,13 @@ class Chauffeur
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"infos:chauffeur"})
      */
     private $telephone;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"infos:chauffeur"})
      */
     private $numero_cni;
 
