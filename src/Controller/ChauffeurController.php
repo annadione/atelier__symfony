@@ -39,4 +39,36 @@ class ChauffeurController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/modifie/{id}}", name="chauffeur_modif")
+     */
+    public function mod(Chauffeur $chauffeur,EntityManagerInterface $manager,Request $request){
+        $form = $this -> createForm(ChauffeurType::class,$chauffeur);
+        $form -> handleRequest($request);
+        if($form -> isSubmitted() && $form -> isValid()){
+            $manager -> flush();
+            return  $this -> redirectToRoute('chauffeur');
+        }
+        return $this->render('chauffeur/modifie.html.twig',[
+            'chauffeur' => $chauffeur,
+            'forms'  => $form -> createView()
+        ]);
+    }
+
+    /**
+     * @Route("/chauffeur/delete{id}", name="chauffeur_delete")
+     *
+     */
+    public function sup($id,EntityManagerInterface $manager)
+    {
+
+        $chauffeur = $manager->getRepository(Chauffeur::class)->find($id);
+        if ($chauffeur != null ){
+            $manager->remove($chauffeur);
+            $manager->flush();
+        }
+        return $this->redirectToRoute('chauffeur');
+    }
+
+
 }

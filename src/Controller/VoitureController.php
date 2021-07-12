@@ -45,4 +45,35 @@ class VoitureController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/modifie_voiture/{id}}", name="voiture_modif")
+     */
+    public function modifier(Voiture $voiture,EntityManagerInterface $manager,Request $request){
+        $form=$this -> createForm(VoitureType::class, $voiture);
+        $form -> handleRequest($request);
+        if($form -> isSubmitted() && $form -> isValid()){
+            $manager -> flush();
+            return  $this -> redirectToRoute('voiture');
+        }
+        return $this->render('voiture/modifie.html.twig',[
+            'form'  => $form -> createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/voiture/delete{id}", name="voiture_delete")
+     *
+     */
+    public function supprimer($id,EntityManagerInterface $manager)
+    {
+
+        $voiture = $manager->getRepository(Voiture::class)->find($id);
+        if ($voiture != null ){
+            $manager->remove($voiture);
+            $manager->flush();
+        }
+        return $this->redirectToRoute('voiture');
+    }
+
+
 }

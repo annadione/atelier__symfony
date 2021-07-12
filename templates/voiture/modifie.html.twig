@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}voiture{% endblock %}
+
+{% block body %}
+
+    <h2 style="margin-top: 2%; margin-left: 40%; margin-bottom: 3%">Modification d'une voiture</h2>
+    <div class="container">
+    <div class="form-group" style=" padding: 3%; background-color: rgba(19, 19, 18, 0.2); border-radius: 50%">
+        {{ form_start(form) }}
+        <div class="row" style="margin-left: 23%">
+            <div class="col-md-4">{{ form_row(form.marque,{'attr':{'placeholder': 'Saisissez la marque'}}) }}</div>
+            <div class="col-md-4">{{ form_row(form.model,{'attr':{'placeholder': 'Saisissez le model'}}) }}</div>
+        </div>
+        <div class="row" style="margin-left: 15%">
+            <div class="col-md-5">{{ form_row(form.assurance,{'attr':{'placeholder' :'Saisissez le numero de assurance'}}) }}</div>
+            <div class="col-md-5">{{ form_row(form.carte_grise,{'attr':{'placeholder' :'Saisissez le numero de la carte grise'}}) }}</div>
+        </div>
+        <div class="row" style="margin-left: 23%">
+            <div class="col-md-4">{{ form_row(form.matricule,{'attr':{'placeholder': 'Saisissez le matricule'}}) }}</div>
+            <div class="col-md-4">{{ form_row(form.chaufvoit,{'label': 'Chauffeur'}) }}</div>
+        </div>
+        <button type="submit" class="btn btn-success" style="margin-top: 1%; margin-left: 46%">Modifier</button>
+        {{ form_end(form) }}
+
+    </div>
+{% endblock %}

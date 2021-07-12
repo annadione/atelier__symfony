@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Chauffeur{% endblock %}
+
+{% block body %}
+
+<h2 style="margin-top: 2%; margin-left: 38%; margin-bottom: 3%">Modification d'un chauffeur</h2>
+<div class="container">
+    <div class="form-group" style=" padding: 3%; background-color: rgba(19, 19, 18, 0.2); border-radius: 50%">
+        {{ form_start(forms) }}
+        <div class="row" style="margin-left: 23%">
+            <div class="col-md-4">{{ form_row(forms.nom,{'attr':{'placeholder': 'Saisissez la nom'}}) }}</div>
+            <div class="col-md-4">{{ form_row(forms.prenom,{'attr':{'placeholder': 'Saisissez le prenom'}}) }}</div>
+        </div>
+        <div class="row" style="margin-left: 23%">
+            <div class="col-md-4">{{ form_row(forms.date_naissance,{'attr':{'placeholder' :'Choisissez la date'}}) }}</div>
+            <div class="col-md-4">{{ form_row(forms.telephone,{'attr':{'placeholder' :'Saisissez le numero de telephone'}}) }}</div>
+        </div>
+        <div class="row" style="margin-left: 23%">
+            <div class="col-md-4">{{ form_row(forms.numero_cni,{'attr':{'placeholder': 'Saisissez le numero de CNI'}}) }}</div>
+            <div class="col-md-4">{{ form_row(forms.permis,{'attr':{'placeholder': 'Saisissez le numero de permis'}}) }}</div>
+        </div>
+        <div class="row" style="margin-left: 23%">
+            <div class="col-md-4">{{ form_row(forms.login,{'attr':{'placeholder': 'Saisissez le login'}}) }}</div>
+            <div class="col-md-4">{{ form_row(forms.pass_word,{'attr':{'placeholder': 'Saisissez le mots de passe'}}) }}</div>
+        </div>
+        <button type="submit" class="btn btn-success" style="margin-top: 1%; margin-left: 46%">Modifier</button>
+        {{ form_end(forms) }}
+
+    </div>
+
+
+    {% endblock %}

@@ -30,7 +30,7 @@
     </div>
 
 
-    <table class="table">
+    <table class="table" style="margin-top: 40px;">
         <thead>
         <tr>
             <th>Id</th>
@@ -46,20 +46,20 @@
         </tr>
         </thead>
         <tbody>
-        {% for voit  in repo %}
+        {% for chauf  in repo %}
             <tr>
-                <td>{{ voit.id }}</td>
-                <td>{{ voit.nom}}</td>
-                <td>{{ voit.prenom }}</td>
-                <td>{{ voit.dateNaissance | date('d/m/Y')}}</td>
-                <td>{{ voit.telephone}}</td>
-                <td>{{ voit.numeroCni}}</td>
-                <td>{{ voit.permis}}</td>
-                <td>{{ voit.login}}</td>
-                <td>{{ voit.passWord}}</td>
+                <td>{{ chauf.id }}</td>
+                <td>{{ chauf.nom}}</td>
+                <td>{{ chauf.prenom }}</td>
+                <td>{{ chauf.dateNaissance | date('d/m/Y')}}</td>
+                <td>{{ chauf.telephone}}</td>
+                <td>{{ chauf.numeroCni}}</td>
+                <td>{{ chauf.permis}}</td>
+                <td>{{ chauf.login}}</td>
+                <td>{{ chauf.passWord}}</td>
                 <td>
-                    <a href="#">Modifier</a>
-                    <a href="#">Supprimer</a>
+                    <a href="{{ path('chauffeur_modif',{'id': chauf.id}) }}" class="btn btn-secondary">Modifier</a>
+                    <a href="{{ path('chauffeur_delete',{'id': chauf.id}) }}" class="btn btn-danger">Supprimer</a>
                 </td>
             </tr>
         {% endfor %}

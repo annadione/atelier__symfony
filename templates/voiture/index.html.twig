@@ -26,7 +26,7 @@
     </div>
 
 
-    <table class="table" style="margin-top: 3%;">
+    <table class="table" style="margin-top: 40px;">
         <thead>
             <tr>
                 <th>Id</th>
@@ -50,8 +50,8 @@
                 <td>{{ voit.matricule}}</td>
                 <td>{{ voit.chaufvoit}}</td>
                 <td>
-                    <a href="#">Modifier</a>
-                    <a href="#">Supprimer</a>
+                    <a href="{{ path('voiture_modif',{'id': voit.id}) }}" class="btn btn-secondary">Modifier</a>
+                    <a href="{{ path('voiture_delete',{'id': voit.id}) }}" class="btn btn-danger">Supprimer</a>
                 </td>
                 </tr>
             {% endfor %}
