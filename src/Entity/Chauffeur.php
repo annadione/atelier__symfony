@@ -72,7 +72,8 @@ class Chauffeur
     private $permis;
 
     /**
-     * @ORM\OneToMany(targetEntity=Voiture::class, mappedBy="chaufvoit")
+     * @ORM\OneToMany(targetEntity=Voiture::class, mappedBy="chaufvoit",cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
      */
     private $voitures;
 
