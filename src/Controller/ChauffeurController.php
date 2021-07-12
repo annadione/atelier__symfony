@@ -15,7 +15,7 @@ class ChauffeurController extends AbstractController
 {
 
     /**
-     * @Route("/", name="chauffeur")
+     * @Route("/chauffeur", name="chauffeur")
      */
     public function new(Request $request, EntityManagerInterface $manager, ChauffeurRepository $repo): Response
     {
